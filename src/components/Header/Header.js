@@ -1,4 +1,5 @@
 import "./Header.css";
+import avatarUrl from "../../images/avatar.png";
 
 const Header = ({ onCreateModal }) => {
   return (
@@ -17,7 +18,7 @@ const Header = ({ onCreateModal }) => {
         </div>
         <div>Terrence Tegegne</div>
         <div>
-          <img src="../../images/avatar.svg" alt="logo" />
+          <img src={avatarUrl} alt="logo" />
         </div>
       </div>
     </header>
