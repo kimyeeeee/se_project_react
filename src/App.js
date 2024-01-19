@@ -1,18 +1,22 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Header from "./Header/Header";
-import Main from "./Main/Main";
-import defaultClothingItems from "./util/constants";
-import Footer from "./Footer/Footer";
-import ModalWithForm from "./ModalWithForm/ModalWithForm";
-import { useState } from "react";
-import ItemModal from "./ItemModal/ItemModal.js";
-import { getForecastWeather } from "./util/weatherApi.js";
+import Header from "./components/Header/Header.js";
+import Main from "./components/Main/Main.js";
+import defaultClothingItems from "./components/util/constants.js";
+import Footer from "./components/Footer/Footer.js";
+import ModalWithForm from "./components/ModalWithForm/ModalWithForm.js";
+import { useState, useEffect } from "react";
+import ItemModal from "./components/ItemModal/ItemModal.js";
+import {
+  getForecastWeather,
+  parseWeatherData,
+} from "./components/util/weatherApi.js";
 
 function App() {
   const weatherTemp = "30";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
+  const [temp, setTemp] = useState(0);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -29,14 +33,16 @@ function App() {
 
   useEffect(() => {
     getForecastWeather().then((data) => {
-      console.log(data);
+      const temperature = parseWeatherData(data);
+      console.log(temp);
+      setTemp(temperature);
     });
   }, []);
-
+  console.log(temp);
   return (
     <div>
       <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={weatherTemp} onSelectCard={handleSelectedCard} />
+      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} temp={temp} />
       <Footer />
       {activeModal === "create" && (
         <ModalWithForm title="New Garment" onClose={handleCloseModal}>

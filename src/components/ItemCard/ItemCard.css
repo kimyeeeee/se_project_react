@@ -1,0 +1,9 @@
+.card_name {
+  text-align: center;
+}
+
+.card_image {
+  width: 328px;
+  height: 328px;
+  border-radius: 10px;
+}
