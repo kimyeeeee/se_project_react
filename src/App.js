@@ -2,15 +2,12 @@ import logo from "./logo.svg";
 import "./App.css";
 import Header from "./components/Header/Header.js";
 import Main from "./components/Main/Main.js";
-import defaultClothingItems from "./components/utils/constants.js";
+import defaultClothingItems from "./utils/constants.js";
 import Footer from "./components/Footer/Footer.js";
 import ModalWithForm from "./components/ModalWithForm/ModalWithForm.js";
 import { useState, useEffect } from "react";
 import ItemModal from "./components/ItemModal/ItemModal.js";
-import {
-  getForecastWeather,
-  parseWeatherData,
-} from "./components/utils/weatherApi.js";
+import { getForecastWeather, parseWeatherData } from "./utils/weatherApi.js";
 
 function App() {
   const weatherTemp = "30";
