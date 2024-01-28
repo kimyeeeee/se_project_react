@@ -18,7 +18,7 @@
 }
 
 .card_section {
-  margin-top: 20px;
+  margin-top: 40px;
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
   size: 20px;
@@ -29,6 +29,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-content: center;
-  margin-top: 20px;
+  justify-content: space-between;
+  margin-top: 34px;
 }

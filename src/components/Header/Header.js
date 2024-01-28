@@ -1,12 +1,13 @@
 import "./Header.css";
 import avatarUrl from "../../images/avatar.png";
+import wtwrLogo from "../../images/wtwrLogo.svg";
 
 const Header = ({ onCreateModal }) => {
   return (
     <header className="header">
       <div className="header__logo">
         <div>
-          <img src={require("../../images/wtwrLogo.svg").default} alt="logo" />
+          <img src={wtwrLogo} alt="wtwr-logo" />
         </div>
         <div>Date</div>
       </div>
@@ -18,7 +19,7 @@ const Header = ({ onCreateModal }) => {
         </div>
         <div>Terrence Tegegne</div>
         <div>
-          <img src={avatarUrl} alt="logo" />
+          <img src={avatarUrl} alt="avatar-pic" />
         </div>
       </div>
     </header>

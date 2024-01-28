@@ -2,7 +2,7 @@ import "./ItemCard.css";
 
 const ItemCard = ({ item, onSelectCard }) => {
   return (
-    <div>
+    <div className="card_container">
       <div>
         <img
           className="card_image"

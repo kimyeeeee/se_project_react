@@ -13,7 +13,7 @@
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
-  padding: 0 20px;
+  padding: 32px 40px 28px 40px;
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
   size: 20px;
@@ -30,4 +30,6 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  top: 32px;
+  right: 40px;
 }

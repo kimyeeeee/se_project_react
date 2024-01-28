@@ -1,0 +1,54 @@
+.modal {
+  font-family: "CabinetGrotesk-Bold";
+  font-weight: 700;
+  size: 20px;
+  line-height: 24.8px;
+  position: fixed;
+}
+
+.modal__content {
+  position: relative;
+  border-radius: 16px;
+  width: 498px;
+  height: 610px;
+  padding: 0px;
+}
+
+.modal__image {
+  width: 498px;
+  height: 498px;
+  border-radius: 16px;
+}
+
+.modal__description {
+  padding: 15px 32px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+}
+.modal__card-name {
+  /* padding-left: 30px;
+  padding-bottom: 15px;
+  padding-top: 20px; */
+}
+
+.modal__weather-type {
+  /* padding-left: 30px;
+  padding-bottom: 15px; */
+}
+
+.modal__close-button-white {
+  position: absolute;
+  padding: 0px;
+  height: 16px;
+  width: 16px;
+  color: #ffffff;
+  top: 20px;
+  left: 465px;
+  border: none;
+  background-color: transparent;
+}
+
+.modal__form {
+  flex-direction: column;
+}

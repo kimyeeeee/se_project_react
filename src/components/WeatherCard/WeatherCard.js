@@ -1,3 +1,6 @@
+import "./WeatherCard.css";
+import sunny from "../../images/weatherConditions/sunny.svg";
+
 const weatherConditions = [
   {
     url: require("../../images/weatherConditions/sunny.svg").default,
