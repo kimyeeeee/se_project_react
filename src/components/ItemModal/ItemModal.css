@@ -8,16 +8,24 @@
 
 .modal__content {
   position: relative;
+}
+
+.modal__content-with-pic {
   border-radius: 16px;
   width: 498px;
   height: 610px;
   padding: 0px;
+  max-width: 498px;
+  width: 100%;
+  max-height: 610px;
+  height: 100%;
 }
 
 .modal__image {
   width: 498px;
   height: 498px;
-  border-radius: 16px;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
 }
 
 .modal__description {
@@ -43,8 +51,8 @@
   height: 16px;
   width: 16px;
   color: #ffffff;
-  top: 20px;
-  left: 465px;
+  top: 26px;
+  right: 26px;
   border: none;
   background-color: transparent;
 }
