@@ -32,11 +32,15 @@ function App() {
   };
 
   useEffect(() => {
-    getForecastWeather().then((data) => {
-      const temperature = parseWeatherData(data);
+    getForecastWeather()
+      .then((data) => {
+        const temperature = parseWeatherData(data);
 
-      setTemp(temperature);
-    });
+        setTemp(temperature);
+      })
+      .catch((err) => {
+        console.error("Error. The request failed");
+      });
   }, []);
 
   return (
@@ -51,7 +55,7 @@ function App() {
           onClose={handleCloseModal}
         >
           <div className="form__name-container">
-            <label className="input-title">
+            <label htmlFor="name" className="input-title">
               Name
               <input
                 className="input-box"
@@ -60,11 +64,12 @@ function App() {
                 minLength="1"
                 maxLength="30"
                 placeholder="Name"
+                id="name"
               />
             </label>
           </div>
           <div className="form__image-container">
-            <label className="input-title">
+            <label htmlFor="url" className="input-title">
               Image
               <input
                 className="input-box"
@@ -73,6 +78,7 @@ function App() {
                 minLength="1"
                 maxLength="30"
                 placeholder="Image URL"
+                id="url"
               />
             </label>
           </div>
@@ -81,15 +87,15 @@ function App() {
             <div>
               <div>
                 <input name="weather" type="radio" id="hot" value="hot" />
-                <label> Hot</label>
+                <label htmlFor="hot"> Hot</label>
               </div>
               <div>
                 <input name="weather" type="radio" id="warm" value="warm" />
-                <label> Warm</label>
+                <label htmlFor="warm"> Warm</label>
               </div>
               <div>
                 <input name="weather" type="radio" id="cold" value="cold" />
-                <label> Cold</label>
+                <label htmlFor="cold"> Cold</label>
               </div>
             </div>
           </div>
