@@ -1,4 +1,4 @@
-const defaultClothingItems = [
+export const defaultClothingItems = [
   {
     _id: 0,
     name: "Cap",
@@ -100,4 +100,4 @@ export const weatherConditions = [
   },
 ];
 
-export default defaultClothingItems;
+// export default defaultClothingItems;

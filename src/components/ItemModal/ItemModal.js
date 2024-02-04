@@ -17,7 +17,7 @@ const ItemModal = ({ selectedCard, onClose }) => {
           alt="popup-of-clothing"
         />
         <div className="modal__description">
-          <div className="modal__card-name">{selectedCard.name}</div>
+          <p className="modal__card-name">{selectedCard.name}</p>
           <div className="modal__weather-type">
             Weather: {selectedCard.weather}
           </div>

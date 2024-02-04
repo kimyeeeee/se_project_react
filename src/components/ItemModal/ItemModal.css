@@ -1,10 +1,10 @@
-.modal {
+/* .modal {
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
   size: 20px;
   line-height: 24.8px;
   position: fixed;
-}
+} */
 
 .modal__content {
   position: relative;
@@ -35,9 +35,7 @@
   row-gap: 12px;
 }
 .modal__card-name {
-  /* padding-left: 30px;
-  padding-bottom: 15px;
-  padding-top: 20px; */
+  margin: 0px;
 }
 
 .modal__weather-type {
