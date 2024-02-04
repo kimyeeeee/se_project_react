@@ -8,6 +8,7 @@ const ItemCard = ({ item, onSelectCard }) => {
           className="card_image"
           src={item.link}
           onClick={() => onSelectCard(item)}
+          alt="pic-of-clothing"
         />
       </div>
       <div className="card_name">{item.name}</div>
