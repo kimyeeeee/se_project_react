@@ -15,9 +15,7 @@ export const getForecastWeather = () => {
       return Promise.reject(`Error: ${res.status}`);
     }
   });
-  // .catch((err) => {
-  //   console.error("Error. The request failed");
-  // });
+
   return weatherApi;
 };
 
