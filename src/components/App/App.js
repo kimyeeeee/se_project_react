@@ -11,12 +11,18 @@ import {
   getForecastWeather,
   parseWeatherData,
 } from "../../utils/weatherApi.js";
+import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperatureUnitContext.js";
+import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
+import AddItemModal from "../AddItemModal/AddItemModal.js";
+import ItemCard from "../ItemCard/ItemCard.js";
 
 function App() {
   const weatherTemp = "30";
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [temp, setTemp] = useState(0);
+  const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
+  const [clothingItems, setClothingItems] = useState([]);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -31,6 +37,24 @@ function App() {
     setSelectedCard(card);
   };
 
+  const handleToggleSwitchChange = () => {
+    if (currentTemperatureUnit === "C") setCurrentTemperatureUnit("F");
+    if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
+  };
+
+  // const handleAddItemSubmit = (e) => {
+  //   setClothingItems([ItemCard, ...clothingItems]);
+  //   clothingItems.append(<ItemCard></ItemCard>);
+  // };
+
+  // const handleDeleteCard = (card) => {
+  //   .deleteItem(card._id)
+  // };
+
+  const onAddItem = (values) => {
+    console.log(values);
+  };
+
   useEffect(() => {
     getForecastWeather()
       .then((data) => {
@@ -42,68 +66,32 @@ function App() {
         console.error("Error. The request failed");
       });
   }, []);
-
+  console.log(currentTemperatureUnit);
   return (
     <div>
-      <Header onCreateModal={handleCreateModal} />
-      <Main weatherTemp={temp} onSelectCard={handleSelectedCard} temp={temp} />
-      <Footer />
-      {activeModal === "create" && (
-        <ModalWithForm
-          className="modal-with-form"
-          title="New Garment"
-          onClose={handleCloseModal}
-        >
-          <div className="form__name-container">
-            <label htmlFor="name" className="input-title">
-              Name
-              <input
-                className="input-box"
-                type="text"
-                name="name"
-                minLength="1"
-                maxLength="30"
-                placeholder="Name"
-                id="name"
-              />
-            </label>
-          </div>
-          <div className="form__image-container">
-            <label htmlFor="url" className="input-title">
-              Image
-              <input
-                className="input-box"
-                type="url"
-                name="link"
-                minLength="1"
-                maxLength="30"
-                placeholder="Image URL"
-                id="url"
-              />
-            </label>
-          </div>
-          <div className="form__weather-container">
-            <p>Select the weather type:</p>
-            <div>
-              <div>
-                <input name="weather" type="radio" id="hot" value="hot" />
-                <label htmlFor="hot"> Hot</label>
-              </div>
-              <div>
-                <input name="weather" type="radio" id="warm" value="warm" />
-                <label htmlFor="warm"> Warm</label>
-              </div>
-              <div>
-                <input name="weather" type="radio" id="cold" value="cold" />
-                <label htmlFor="cold"> Cold</label>
-              </div>
-            </div>
-          </div>
-        </ModalWithForm>
-      )}
-      {activeModal === "preview" && (
-        <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
-      )}
+      <CurrentTemperatureUnitContext.Provider
+        value={{ currentTemperatureUnit, handleToggleSwitchChange }}
+      >
+        <Header onCreateModal={handleCreateModal} temp={temp} />
+        <Switch>
+          <Route exact path="/">
+            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+          </Route>
+          <Route path="/profile">Profile</Route>
+        </Switch>
+        <Footer />
+        {activeModal === "create" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "create"}
+            onAddItem={onAddItem}
+            // onSubmit={handleAddItemSubmit}
+          />
+        )}
+        {activeModal === "preview" && (
+          <ItemModal selectedCard={selectedCard} onClose={handleCloseModal} />
+        )}
+      </CurrentTemperatureUnitContext.Provider>
     </div>
   );
 }

@@ -33,3 +33,14 @@
   top: 32px;
   right: 40px;
 }
+
+.header__add-clothes-button {
+  font-family: "CabinetGrotesk-Bold";
+  font-weight: 700;
+  size: 20px;
+  line-height: 24.8px;
+  border: none;
+  background-color: transparent;
+  width: 116px;
+  height: 24px;
+}
