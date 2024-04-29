@@ -79,8 +79,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               type="radio"
               id="hot"
-              value={weather}
-              onChage={handleWeatherChange}
+              value="hot"
+              onChange={handleWeatherChange}
             />
             <label htmlFor="hot"> Hot</label>
           </div>
@@ -89,8 +89,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               type="radio"
               id="warm"
-              value={weather}
-              onChage={handleWeatherChange}
+              value="warm"
+              onChange={handleWeatherChange}
             />
             <label htmlFor="warm"> Warm</label>
           </div>
@@ -99,8 +99,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               name="weather"
               type="radio"
               id="cold"
-              value={weather}
-              onChage={handleWeatherChange}
+              value="cold"
+              onChange={handleWeatherChange}
             />
             <label htmlFor="cold"> Cold</label>
           </div>

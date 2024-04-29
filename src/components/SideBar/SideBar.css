@@ -1,0 +1,33 @@
+.sidebar__container {
+  display: flex;
+  flex-direction: column;
+  width: 229px;
+  height: 138px;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24.8px;
+  font-weight: 600;
+  color: black;
+}
+
+.sidebar {
+  display: flex;
+  width: 229px;
+  height: 56px;
+  gap: 16px;
+}
+
+.sidebar__avatar-logo {
+  border-radius: 50%;
+  height: 56px;
+  width: 56px;
+}
+
+.sidebar__username {
+  width: 157px;
+  height: 25px;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24.8px;
+  font-weight: 700;
+}

@@ -1,0 +1,7 @@
+.profile {
+  display: flex;
+  gap: 80px;
+  margin-top: 63px;
+  margin-bottom: 76px;
+  max-width: 1440px;
+}

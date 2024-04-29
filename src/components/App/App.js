@@ -15,6 +15,8 @@ import { CurrentTemperatureUnitContext } from "../../contexts/CurrentTemperature
 import { Switch, Route } from "react-router-dom/cjs/react-router-dom.min.js";
 import AddItemModal from "../AddItemModal/AddItemModal.js";
 import ItemCard from "../ItemCard/ItemCard.js";
+import { getItems, postItems } from "../../utils/api.js";
+import Profile from "../Profile/Profile.js";
 
 function App() {
   const weatherTemp = "30";
@@ -42,18 +44,18 @@ function App() {
     if (currentTemperatureUnit === "F") setCurrentTemperatureUnit("C");
   };
 
-  // const handleAddItemSubmit = (e) => {
-  //   setClothingItems([ItemCard, ...clothingItems]);
-  //   clothingItems.append(<ItemCard></ItemCard>);
-  // };
+  const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
+    return postItems({ name, imageUrl, weather }).then((res) => {
+      setClothingItems([getItems, ...clothingItems]);
+    });
+  };
 
   // const handleDeleteCard = (card) => {
-  //   .deleteItem(card._id)
+  //   pass the handler from the App.js (contains the API call)
+  // if successful, the clothingItems state should be updated using the filter() method.
+  // also create a copy of the array and exclude the deleted card from it
+  // lastly, close the item modal window.
   // };
-
-  const onAddItem = (values) => {
-    console.log(values);
-  };
 
   useEffect(() => {
     getForecastWeather()
@@ -65,8 +67,20 @@ function App() {
       .catch((err) => {
         console.error("Error. The request failed");
       });
+    // TODO: make a request to collect items
   }, []);
-  console.log(currentTemperatureUnit);
+
+  useEffect(() => {
+    getItems()
+      .then((cards) => {
+        setClothingItems(cards);
+      })
+      .catch((err) => {
+        console.error("Error. The request failed");
+      });
+  }, []);
+
+  // console.log(currentTemperatureUnit);
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider
@@ -75,16 +89,22 @@ function App() {
         <Header onCreateModal={handleCreateModal} temp={temp} />
         <Switch>
           <Route exact path="/">
-            <Main weatherTemp={temp} onSelectCard={handleSelectedCard} />
+            <Main
+              weatherTemp={temp}
+              onSelectCard={handleSelectedCard}
+              clothingItems={[]}
+            />
           </Route>
-          <Route path="/profile">Profile</Route>
+          <Route path="/Profile">
+            <Profile></Profile>
+          </Route>
         </Switch>
         <Footer />
         {activeModal === "create" && (
           <AddItemModal
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
-            onAddItem={onAddItem}
+            onAddItem={handleAddItemSubmit}
             // onSubmit={handleAddItemSubmit}
           />
         )}
