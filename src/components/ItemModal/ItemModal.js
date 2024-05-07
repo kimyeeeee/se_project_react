@@ -1,7 +1,7 @@
 import "./ItemModal.css";
 import handleDeleteCard from "../App/App.js";
 
-const ItemModal = ({ selectedCard, onClose }) => {
+const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   return (
     <div className={`modal`}>
       <div className="modal__content modal__content-with-pic">
@@ -14,7 +14,7 @@ const ItemModal = ({ selectedCard, onClose }) => {
         </button>
         <img
           className="modal__image"
-          src={selectedCard.link}
+          src={selectedCard.imageUrl}
           alt={selectedCard.name}
         />
         <div className="modal__description-container">
@@ -27,7 +27,7 @@ const ItemModal = ({ selectedCard, onClose }) => {
           <button
             className="modal__delete-item-button"
             type="button"
-            onClick={onClose}
+            onClick={handleDeleteCard}
           >
             Delete Item
           </button>

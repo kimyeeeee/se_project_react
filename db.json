@@ -104,40 +104,14 @@
     },
     {
       "name": "kim yee",
-      "weather": "cold",
-      "_id": 17
-    },
-    {
-      "name": "kim yee",
-      "weather": "cold",
-      "_id": 18
-    },
-    {
-      "name": "kim yee",
-      "weather": "cold",
-      "_id": 20
-    },
-    {
-      "name": "kim yee",
       "weather": "warm",
       "_id": 21
-    },
-    {
-      "name": "kim yee",
-      "weather": "cold",
-      "_id": 24
     },
     {
       "name": "kim yee",
       "imageUrl": "https://images.unsplash.com/ph",
       "weather": "",
       "_id": 25
-    },
-    {
-      "name": "kim yee",
-      "imageUrl": "https://images.unsplash.com/ph",
-      "weather": "cold",
-      "_id": 26
     }
   ]
 }
