@@ -52,13 +52,17 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    deleteItems(selectedCard._id).then(() => {
-      const filteredCards = clothingItems.filter((card) => {
-        return card._id !== selectedCard._id;
+    deleteItems(selectedCard._id)
+      .then(() => {
+        const filteredCards = clothingItems.filter((card) => {
+          return card._id !== selectedCard._id;
+        });
+        setClothingItems(filteredCards);
+        handleCloseModal();
+      })
+      .catch((err) => {
+        console.error("Error. The request failed");
       });
-      setClothingItems(filteredCards);
-      handleCloseModal();
-    });
   };
   //actually render the card
 

@@ -1,10 +1,13 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
 const ClothesSection = ({ clothingItems }) => {
-  // const filteredCards = clothingItems.filter((item) => return
-  //**all cards**
-  // );
+  const { currentUser } = useContext(CurrentUserContext);
+  const filteredCards = clothingItems.filter((item) => {
+    return currentUser._id === currentUser._id;
+  });
 
   return (
     <section className="clothes_section">
