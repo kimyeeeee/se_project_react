@@ -26,3 +26,12 @@ export const postItems = ({ name, imageUrl, weather }) => {
     }),
   }).then(runServerResponse);
 };
+
+export const deleteItems = (_id) => {
+  return fetch(`${baseUrl}/items/${_id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  }).then(runServerResponse);
+};

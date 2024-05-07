@@ -68,14 +68,10 @@
 .modal__delete-item-button {
   background-color: transparent;
   border: none;
-  font-family: "CabinetGrotesk-Bold";
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
   font-weight: 700;
   font-size: 20px;
   line-height: 24.8px;
   padding: 15px 32px;
   color: #ff4d00;
-  font-family: "CabinetGrotesk-Bold";
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24.8px;
 }
