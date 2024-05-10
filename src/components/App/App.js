@@ -64,13 +64,6 @@ function App() {
         console.error("Error. The request failed");
       });
   };
-  //actually render the card
-
-  //   pass the handler from the App.js (contains the API call)
-  // if successful, the clothingItems state should be updated using the filter() method.
-  // also create a copy of the array and exclude the deleted card from it
-  // lastly, close the item modal window.
-  // };
 
   useEffect(() => {
     getForecastWeather()
@@ -82,7 +75,6 @@ function App() {
       .catch((err) => {
         console.error("Error. The request failed");
       });
-    // TODO: make a request to collect items
   }, []);
 
   useEffect(() => {
@@ -96,7 +88,6 @@ function App() {
       });
   }, []);
 
-  // console.log(currentTemperatureUnit);
   return (
     <div>
       <CurrentTemperatureUnitContext.Provider
