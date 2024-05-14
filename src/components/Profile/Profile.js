@@ -1,12 +1,16 @@
+import React from "react";
 import SideBar from "../SideBar/SideBar";
 import ClothesSection from "../ClothesSection/ClothesSection";
 import "./Profile.css";
 
-const Profile = ({ clothingItems }) => {
+const Profile = ({ clothingItems, onSelectCard }) => {
   return (
     <div className="profile">
-      <SideBar></SideBar>
-      <ClothesSection onSelectCard={onSelectCard}></ClothesSection>
+      <SideBar />
+      <ClothesSection
+        onSelectCard={onSelectCard}
+        clothingItems={clothingItems}
+      />
     </div>
   );
 };

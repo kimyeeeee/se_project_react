@@ -25,7 +25,7 @@ function App() {
   const [temp, setTemp] = useState(0);
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
   const [clothingItems, setClothingItems] = useState([]);
-  console.log("clothingItems", clothingItems);
+  // console.log("clothingItems", clothingItems);
 
   const handleCreateModal = () => {
     setActiveModal("create");
@@ -103,7 +103,10 @@ function App() {
             />
           </Route>
           <Route path="/Profile">
-            <Profile></Profile>
+            <Profile
+              onSelectCard={handleSelectedCard}
+              clothingItems={clothingItems}
+            />
           </Route>
         </Switch>
         <Footer />
@@ -112,7 +115,6 @@ function App() {
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "create"}
             onAddItem={handleAddItemSubmit}
-            // onSubmit={handleAddItemSubmit}
           />
         )}
         {activeModal === "preview" && (

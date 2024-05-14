@@ -19,7 +19,7 @@ const ClothesSection = ({ clothingItems }) => {
       </div>
       <div className="clothes_section__cards">
         {filteredCards.map((item) => {
-          return <ItemCard></ItemCard>;
+          return <ItemCard key={item._id}></ItemCard>;
         })}
       </div>
     </section>
