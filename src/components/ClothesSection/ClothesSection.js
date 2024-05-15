@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
-const ClothesSection = ({ clothingItems }) => {
+const ClothesSection = ({ clothingItems, onSelectCard }) => {
   const { currentUser } = useContext(CurrentUserContext);
   const filteredCards = clothingItems.filter((item) => {
     return currentUser._id === currentUser._id;
@@ -19,7 +19,13 @@ const ClothesSection = ({ clothingItems }) => {
       </div>
       <div className="clothes_section__cards">
         {filteredCards.map((item) => {
-          return <ItemCard key={item._id}></ItemCard>;
+          return (
+            <ItemCard
+              item={item}
+              onSelectCard={onSelectCard}
+              key={item._id}
+            ></ItemCard>
+          );
         })}
       </div>
     </section>
