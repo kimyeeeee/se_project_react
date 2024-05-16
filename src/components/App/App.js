@@ -46,9 +46,13 @@ function App() {
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
-    return postItems({ name, imageUrl, weather }).then((res) => {
-      setClothingItems([res, ...clothingItems]);
-    });
+    return postItems({ name, imageUrl, weather })
+      .then((res) => {
+        setClothingItems([res, ...clothingItems]);
+      })
+      .catch((error) => {
+        console.log("Error. The request failed");
+      });
   };
 
   const handleDeleteCard = (card) => {
@@ -106,6 +110,7 @@ function App() {
             <Profile
               onSelectCard={handleSelectedCard}
               clothingItems={clothingItems}
+              handleCreateModal={handleCreateModal}
             />
           </Route>
         </Switch>
