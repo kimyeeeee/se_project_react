@@ -32,15 +32,15 @@ function Main({ weatherTemp, onSelectCard, clothingItems }) {
     return item.weather.toLowerCase() === weatherType;
   });
 
-  const weatherCelsiumType = useMemo(() => {
-    if (temp >= 30) {
-      return "hot";
-    } else if (temp >= 66 && temp <= 85) {
-      return "warm";
-    } else if (temp <= 65) {
-      return "cold";
-    }
-  }, [weatherTemp]);
+  // const weatherCelsiumType = useMemo(() => {
+  //   if (temp >= 30) {
+  //     return "hot";
+  //   } else if (temp >= 66 && temp <= 85) {
+  //     return "warm";
+  //   } else if (temp <= 65) {
+  //     return "cold";
+  //   }
+  // }, [weatherTemp]);
 
   return (
     <main className="main">

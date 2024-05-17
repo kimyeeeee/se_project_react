@@ -1,5 +1,5 @@
 const baseUrl = "http://localhost:3001";
-const runServerResponse = (res) => {
+export const checkServerResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
@@ -10,7 +10,7 @@ export const getItems = () => {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
-  }).then(runServerResponse);
+  }).then(checkServerResponse);
 };
 
 export const postItems = ({ name, imageUrl, weather }) => {
@@ -24,7 +24,7 @@ export const postItems = ({ name, imageUrl, weather }) => {
       imageUrl,
       weather,
     }),
-  }).then(runServerResponse);
+  }).then(checkServerResponse);
 };
 
 export const deleteItems = (_id) => {
@@ -33,5 +33,5 @@ export const deleteItems = (_id) => {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(runServerResponse);
+  }).then(checkServerResponse);
 };

@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+import { useForm } from "../../hooks/useForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
-  const [name, setName] = useState("");
-  const handleNameChange = (e) => {
-    // console.log(e.target.value);
-    setName(e.target.value);
-  };
+  const { values, handleChange, setValues } = useForm({});
+  // const handleNameChange = (e) => {
+  //   setName(e.target.value);
+  // };
 
-  const [imageUrl, setUrl] = useState("");
-  const handleUrlChange = (e) => {
-    console.log(e.target.value);
-    setUrl(e.target.value);
-  };
+  // const [imageUrl, setUrl] = useState("");
+  // const handleUrlChange = (e) => {
+  //   // console.log(e.target.value);
+  //   setUrl(e.target.value);
+  // };
 
-  const [weather, setWeather] = useState("");
-  const handleWeatherChange = (e) => {
-    // console.log(e.target.value);
-    setWeather(e.target.value);
-  };
+  // const [weather, setWeather] = useState("");
+  // const handleWeatherChange = (e) => {
+  //   setWeather(e.target.value);
+  // };
 
-  useEffect((isOpen) => {
-    setName("");
-    setUrl("");
-    setWeather("");
-  }, []);
+  // useEffect((isOpen) => {
+  //   setName("");
+  //   setUrl("");
+  //   setWeather("");
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onAddItem({ name, imageUrl, weather }).then(() => handleCloseModal());
+    onAddItem(values);
+    handleCloseModal();
   };
 
   return (
@@ -50,8 +50,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             maxLength="30"
             placeholder="Name"
             id="name"
-            value={name}
-            onChange={handleNameChange}
+            value={values.name || ""}
+            onChange={handleChange}
           />
         </label>
       </div>
@@ -66,8 +66,8 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
             maxLength="999"
             placeholder="Image URL"
             id="url"
-            value={imageUrl}
-            onChange={handleUrlChange}
+            value={values.imageUrl || ""}
+            onChange={handleChange}
           />
         </label>
       </div>
@@ -80,7 +80,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               type="radio"
               id="hot"
               value="hot"
-              onChange={handleWeatherChange}
+              onChange={handleChange}
             />
             <label htmlFor="hot"> Hot</label>
           </div>
@@ -90,7 +90,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               type="radio"
               id="warm"
               value="warm"
-              onChange={handleWeatherChange}
+              onChange={handleChange}
             />
             <label htmlFor="warm"> Warm</label>
           </div>
@@ -100,7 +100,7 @@ const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
               type="radio"
               id="cold"
               value="cold"
-              onChange={handleWeatherChange}
+              onChange={handleChange}
             />
             <label htmlFor="cold"> Cold</label>
           </div>
