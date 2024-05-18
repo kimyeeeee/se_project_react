@@ -5,9 +5,9 @@ import { useContext } from "react";
 
 const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
   // const { currentUser } = useContext(CurrentUserContext);
-  const filteredCards = clothingItems.filter((item) => {
-    return {}; // { id: undefined } == { id: undefined } --- need to put values if user === current user
-  });
+  // const filteredCards = clothingItems.filter((item) => {
+  //   return {}; // { id: undefined } == { id: undefined } --- need to put values if user === current user
+  // });
 
   return (
     <section className="clothes_section">

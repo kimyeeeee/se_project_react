@@ -49,6 +49,7 @@ function App() {
     return postItems({ name, imageUrl, weather })
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
+        handleCloseModal();
       })
       .catch((error) => {
         console.log("Error. The request failed");

@@ -4,31 +4,10 @@ import { useForm } from "../../hooks/useForm";
 
 const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
   const { values, handleChange, setValues } = useForm({});
-  // const handleNameChange = (e) => {
-  //   setName(e.target.value);
-  // };
-
-  // const [imageUrl, setUrl] = useState("");
-  // const handleUrlChange = (e) => {
-  //   // console.log(e.target.value);
-  //   setUrl(e.target.value);
-  // };
-
-  // const [weather, setWeather] = useState("");
-  // const handleWeatherChange = (e) => {
-  //   setWeather(e.target.value);
-  // };
-
-  // useEffect((isOpen) => {
-  //   setName("");
-  //   setUrl("");
-  //   setWeather("");
-  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onAddItem(values);
-    handleCloseModal();
   };
 
   return (
