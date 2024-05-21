@@ -1,14 +1,8 @@
 import "./ClothesSection.css";
 import ItemCard from "../ItemCard/ItemCard";
 import { useContext } from "react";
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
 const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
-  // const { currentUser } = useContext(CurrentUserContext);
-  // const filteredCards = clothingItems.filter((item) => {
-  //   return {}; // { id: undefined } == { id: undefined } --- need to put values if user === current user
-  // });
-
   return (
     <section className="clothes_section">
       <div className="clothes_section__container">
@@ -22,7 +16,7 @@ const ClothesSection = ({ clothingItems, onSelectCard, onCreateModal }) => {
         </button>
       </div>
       <div className="clothes_section__cards">
-        {filteredCards.map((item) => {
+        {clothingItems.map((item) => {
           return (
             <ItemCard
               item={item}
