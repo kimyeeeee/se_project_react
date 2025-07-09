@@ -1,5 +1,4 @@
 import "./ItemModal.css";
-import handleDeleteCard from "../App/App.js";
 
 const ItemModal = ({ selectedCard, onClose, handleDeleteCard }) => {
   return (

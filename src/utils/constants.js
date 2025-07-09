@@ -39,62 +39,62 @@
 
 export const weatherConditions = [
   {
-    url: require("../images/weatherConditions/sunny.svg").default,
+    url: "../images/weatherConditions/sunny.svg",
     day: true,
     type: "sunny",
   },
   {
-    url: require("../images/weatherConditions/cloudy.svg").default,
+    url: "../images/weatherConditions/cloudy.svg",
     day: true,
     type: "cloudy",
   },
   {
-    url: require("../images/weatherConditions/fog.svg").default,
+    url: "../images/weatherConditions/fog.svg",
     day: true,
     type: "fog",
   },
   {
-    url: require("../images/weatherConditions/rain.svg").default,
+    url: "../images/weatherConditions/rain.svg",
     day: true,
     type: "rain",
   },
   {
-    url: require("../images/weatherConditions/snow.svg").default,
+    url: "../images/weatherConditions/snow.svg",
     day: true,
     type: "snow",
   },
   {
-    url: require("../images/weatherConditions/storm.svg").default,
+    url: "../images/weatherConditions/storm.svg",
     day: true,
     type: "storm",
   },
   {
-    url: require("../images/weatherConditions/night-cloudy.svg").default,
+    url: "../images/weatherConditions/night-cloudy.svg",
     day: false,
     type: "night-cloudy",
   },
   {
-    url: require("../images/weatherConditions/night-fog.svg").default,
+    url: "../images/weatherConditions/night-fog.svg",
     day: false,
     type: "night-fog",
   },
   {
-    url: require("../images/weatherConditions/night-rain.svg").default,
+    url: "../images/weatherConditions/night-rain.svg",
     day: false,
     type: "night-rain",
   },
   {
-    url: require("../images/weatherConditions/night-snow.svg").default,
+    url: "../images/weatherConditions/night-snow.svg",
     day: false,
     type: "night-snow",
   },
   {
-    url: require("../images/weatherConditions/night-storm.svg").default,
+    url: "../images/weatherConditions/night-storm.svg",
     day: false,
     type: "night-storm",
   },
   {
-    url: require("../images/weatherConditions/night-sunny.svg").default,
+    url: "../images/weatherConditions/night-sunny.svg",
     day: false,
     type: "night-sunny",
   },

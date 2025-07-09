@@ -2,7 +2,11 @@ import "./Header.css";
 import avatarUrl from "../../images/avatar.png";
 import wtwrLogo from "../../images/wtwrLogo.svg";
 import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
+
 import { Link } from "react-router-dom";
+
+// If not logged in show what you have
+// if log in show different html
 
 const Header = ({ onCreateModal }) => {
   return (
