@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-const AddItemModal = ({ handleCloseModal, onAddItem, isOpen }) => {
+const AddItemModal = ({
+  handleCloseModal,
+  onAddItem,
+  isOpen,
+  buttonText = "Log In",
+}) => {
   const { values, handleChange, setValues } = useForm({});
 
   const handleSubmit = (e) => {
