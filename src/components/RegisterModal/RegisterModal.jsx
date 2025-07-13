@@ -2,8 +2,14 @@
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
+import { Link } from "react-router-dom";
 
-const RegisterModal = ({ handleCloseModal, isOpen }) => {
+const RegisterModal = ({
+  handleCloseModal,
+  isOpen,
+  handleRegistration,
+  buttonText = "Next",
+}) => {
   const { values, handleChange, setValues } = useForm({});
 
   const handleSubmit = (e) => {
@@ -93,23 +99,11 @@ const RegisterModal = ({ handleCloseModal, isOpen }) => {
             onChange={handleChange}
           />
         </label>
-        <div className="modal__button-div">
-          <button
-            type="submit"
-            className="modal__button-sign-up"
-            disabled={!isValid}
-          >
-            Next
-          </button>
-          <span className="modal__or-text">OR</span>
-          <button
-            type="button"
-            className="modal_button-sign-in"
-            onClick={onLogInClick}
-          >
-            Log In
-          </button>
-        </div>
+      </div>
+      <div className="modal__or-Container">
+        <Link to="/login" className="modal__or-link">
+          or Login
+        </Link>
       </div>
     </ModalWithForm>
   );

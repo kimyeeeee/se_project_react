@@ -29,49 +29,49 @@ const LoginModal = ({
 
   return (
     <ModalWithForm
-      className="modal-with-form"
-      title="Login-Modal"
+      className="modal-with-login-form"
+      title="Log in"
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText="Log In"
     >
       <div className="form__name-container">
-        <p className="login__welcome">Log In</p>
         <label htmlFor="email" className="input-title">
           Email:
+          <input
+            className="input-box"
+            id="email"
+            required
+            name="email"
+            type="email"
+            placeholder="Email"
+            value={data.username}
+            onChange={handleChange}
+          />
         </label>
-        <input
-          className="input-box"
-          id="email"
-          required
-          name="email"
-          type="email"
-          value={data.username}
-          onChange={handleChange}
-        />
+      </div>
+
+      <div className="form__image-container">
         <label htmlFor="password" className="input-title">
           Password:
+          <input
+            className="input-box"
+            id="password"
+            required
+            name="password"
+            type="password"
+            placeholder="Password"
+            value={data.password}
+            onChange={handleChange}
+          />
         </label>
-        <input
-          className="input-box"
-          id="password"
-          required
-          name="password"
-          type="password"
-          value={data.password}
-          onChange={handleChange}
-        />
-        <div className="login__button-container">
-          <button type="submit" className="modal__add-garment-button">
-            Log in
-          </button>
-        </div>
+      </div>
 
-        <div className="login__signup">
-          <Link to="/register" className="signup__link">
-            or Register
-          </Link>
-        </div>
+      <div className="modal__or-Container">
+        <Link to="/register" className="modal__or-link">
+          or Register
+        </Link>
       </div>
     </ModalWithForm>
   );

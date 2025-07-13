@@ -19,7 +19,7 @@
   max-width: 440px;
   width: 100%;
   max-height: 436px;
-  height: 100%;
+  height: auto;
   border-radius: 20px;
   padding: 28px 28px 36px 28px;
   border: 1px;
@@ -66,6 +66,7 @@
   border-left: none;
   border-right: none;
   height: 24px;
+  margin-bottom: 24 px;
 }
 .form__weather-container {
   padding-top: 20px;
@@ -73,12 +74,13 @@
 }
 
 .modal__add-garment-button {
-  height: 36px;
-  width: 124px;
+  height: fit-content;
+  width: fit-content;
   background-color: rgba(0, 0, 0);
   color: #ffffff;
   border-radius: 4px;
   border: none;
+  margin-top: 32px;
 }
 
 .modal__add-garment-button:hover {
@@ -87,4 +89,10 @@
 
 .modal__add-garment-button:disabled {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal__or-Container {
+  position: absolute;
+  left: 113px;
+  bottom: 44px;
 }
