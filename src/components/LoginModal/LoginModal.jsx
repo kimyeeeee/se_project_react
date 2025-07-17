@@ -3,14 +3,9 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-const LoginModal = ({
-  handleLogin,
-  isOpen,
-  handleCloseModal,
-  buttonText = "Log In",
-}) => {
+const LoginModal = ({ handleLogin, isOpen, handleCloseModal }) => {
   const [data, setData] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -36,7 +31,7 @@ const LoginModal = ({
       onSubmit={handleSubmit}
       buttonText="Log In"
     >
-      <div className="form__name-container">
+      <div className="form__input-title-container">
         <label htmlFor="email" className="input-title">
           Email:
           <input
@@ -52,7 +47,7 @@ const LoginModal = ({
         </label>
       </div>
 
-      <div className="form__image-container">
+      <div className="form__input-title-container">
         <label htmlFor="password" className="input-title">
           Password:
           <input

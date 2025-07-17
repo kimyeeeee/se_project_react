@@ -82,24 +82,33 @@ function App() {
       });
   };
 
-  const handleRegistration = ({ name, email, password, confirmPassword }) => {
+  const handleRegistration = ({ email, password, name, avatarURL }) => {
     console.log("in handleRegistration");
-    if (password === confirmPassword) {
-      auth
-        .register(name, password, email)
-        .then(() => {
-          navigate("/login");
-        })
-        .catch(console.error);
-    }
+
+    auth
+      .register(name, password, email, avatarURL)
+      .then(() => {
+        console.log("Registered user:", userData);
+        return auth.register(email, password);
+      })
+      .then((loginData) => {
+        console.log("logged in", loginData);
+        handleCloseModal();
+        navigate("/profile");
+      })
+      .catch((err) => {
+        console.error(err);
+        navigate("/login");
+      });
   };
 
-  const handleLogin = ({ username, password }) => {
-    if (!username || !password) {
+  const handleLogin = ({ email, password }) => {
+    console.log("in handleLogin");
+    if (!email || !password) {
       return;
     }
     auth
-      .authorize(username, password)
+      .authorize(email, password)
       .then((data) => {
         if (data.jwt) {
           setToken(data.jwt);
@@ -188,7 +197,10 @@ function App() {
             path="/register"
             element={
               <div className="registerContainer">
-                <RegisterModal handleRegistration={handleRegistration} />
+                <RegisterModal
+                  handleCloseModal={handleCloseModal}
+                  handleRegistration={handleRegistration}
+                />
               </div>
             }
           />

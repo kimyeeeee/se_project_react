@@ -1,11 +1,17 @@
 import { useState } from "react";
 
-export function useForm(inputValues) {
-  const [values, setValues] = useState(inputValues);
+export function useForm(inputData) {
+  const [data, setData] = useState(inputData);
 
   const handleChange = (event) => {
-    const { value, name } = event.target;
-    setValues({ ...values, [name]: value });
+    const { name, password, email, avatarURL } = event.target;
+    setData({
+      ...data,
+      [name]: data.name,
+      [password]: data.password,
+      [email]: data.username,
+      [avatarURL]: data.avatarURL,
+    });
   };
-  return { values, handleChange, setValues };
+  return { data, handleChange, setData };
 }

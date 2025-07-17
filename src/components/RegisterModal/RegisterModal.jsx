@@ -4,26 +4,26 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import { Link } from "react-router-dom";
 
-const RegisterModal = ({
-  handleCloseModal,
-  isOpen,
-  handleRegistration,
-  buttonText = "Next",
-}) => {
-  const { values, handleChange, setValues } = useForm({});
+const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+    name: "",
+    avatarURL: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    handleRegistration(values);
+    handleRegistration(data);
   };
-
-  // const Register = ({ handleRegistration }) => {
-  //   const [data, setData] = useState({
-  //     username: "",
-  //     email: "",
-  //     password: "",
-  //     confirmPassword: "",
-  //   });
 
   return (
     <ModalWithForm
@@ -32,8 +32,9 @@ const RegisterModal = ({
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
+      buttonText="Next"
     >
-      <div className="form__name-container">
+      <div className="form__input-title-container">
         <label htmlFor="email" className="input-title">
           Email*
           <input
@@ -44,13 +45,13 @@ const RegisterModal = ({
             maxLength="30"
             placeholder="Email"
             id="email"
-            value={values.name || ""}
+            value={data.username}
             onChange={handleChange}
             required
           />
         </label>
       </div>
-      <div className="form__image-container">
+      <div className="form__input-title-container">
         <label htmlFor="password" className="input-title">
           Password*
           <input
@@ -61,13 +62,13 @@ const RegisterModal = ({
             maxLength="999"
             placeholder="Password"
             id="password"
-            value={values.imageUrl || ""}
+            value={data.password}
             onChange={handleChange}
             required
           />
         </label>
       </div>
-      <div className="form__name-container">
+      <div className="form__input-title-container">
         <label htmlFor="name" className="input-title">
           Name
           <input
@@ -78,24 +79,23 @@ const RegisterModal = ({
             maxLength="30"
             placeholder="Name"
             id="name"
-            value={values.name || ""}
+            value={data.name}
             onChange={handleChange}
-            required
           />
         </label>
       </div>
-      <div className="form__image-container">
+      <div className="form__input-title-container">
         <label htmlFor="url" className="input-title">
           Avatar URL
           <input
             className="input-box"
             type="url"
-            name="imageUrl"
+            name="avatarURL"
             minLength="1"
             maxLength="999"
             placeholder="Image URL"
             id="url"
-            value={values.imageUrl || ""}
+            value={data.avatarURL}
             onChange={handleChange}
           />
         </label>
