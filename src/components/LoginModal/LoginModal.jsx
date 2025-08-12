@@ -41,7 +41,7 @@ const LoginModal = ({ handleLogin, isOpen, handleCloseModal }) => {
             name="email"
             type="email"
             placeholder="Email"
-            value={data.username}
+            value={data.email}
             onChange={handleChange}
           />
         </label>

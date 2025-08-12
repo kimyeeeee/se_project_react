@@ -13,11 +13,12 @@ export const getItems = () => {
   }).then(checkServerResponse);
 };
 
-export const postItems = ({ name, imageUrl, weather }) => {
+export const postItems = ({ name, imageUrl, weather }, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
     body: JSON.stringify({
       name,
@@ -27,11 +28,22 @@ export const postItems = ({ name, imageUrl, weather }) => {
   }).then(checkServerResponse);
 };
 
-export const deleteItems = (_id) => {
+export const deleteItems = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkServerResponse);
+};
+
+export const getUserInfo = (token) => {
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
     },
   }).then(checkServerResponse);
 };

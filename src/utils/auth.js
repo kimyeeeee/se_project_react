@@ -1,8 +1,7 @@
 const baseUrl = "http://localhost:3001";
 
-export const register = (name, avatar, email, password) => {
-  return (fetch(``),
-  {
+export const register = (name, password, email, avatar) => {
+  return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -14,8 +13,7 @@ export const register = (name, avatar, email, password) => {
 };
 
 export const authorize = (email, password) => {
-  return (fetch(``),
-  {
+  return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -28,20 +26,14 @@ export const authorize = (email, password) => {
 };
 
 export const checkToken = (token) => {
-  return (fetch(``),
-{
-  method: "GET",
-  headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
-    authorization: `Bearer ${token}`,
-  },
-  body:
-})
-}
-
-//create check token http request - GET request
-
-//then use checktone in app.js and use callback hook to check for token
-
-//if token exists, then set isLoggedIn to true
+  return fetch(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then((res) => {
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+  });
+};

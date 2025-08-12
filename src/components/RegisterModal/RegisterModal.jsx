@@ -45,7 +45,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
             maxLength="30"
             placeholder="Email"
             id="email"
-            value={data.username}
+            value={data.email}
             onChange={handleChange}
             required
           />
