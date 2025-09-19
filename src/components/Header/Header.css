@@ -1,6 +1,6 @@
 @font-face {
   font-family: "CabinetGrotesk-Bold";
-  src: url("../../fonts/CabinetGrotesk-Bold.woff") format(woff),
+  src: url("../../fonts/CabinetGrotesk-Bold.woff") format("woff"),
     url("../../fonts/CabinetGrotesk-Bold.woff2") format("woff2");
 
   font-weight: 700;
@@ -16,7 +16,7 @@
   padding: 32px 40px 28px 40px;
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 24.8px;
 }
 
@@ -24,23 +24,55 @@
   display: flex;
   gap: 20px;
   align-items: center;
+  flex: 1;
 }
 
-.header__avatar-logo {
+.header__avatar-img {
+  border-radius: 50%;
+  height: 56px;
+  width: 56px;
+}
+.header__toggle-switch {
   display: flex;
   gap: 20px;
-  align-items: center;
+  align-items: end;
+  justify-content: flex-end;
+  flex: 1;
   top: 32px;
   right: 40px;
+}
+
+.header__avatar-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header__add-clothes-button {
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 24.8px;
   border: none;
   background-color: transparent;
   min-width: 116px;
   min-height: 24px;
+}
+
+.header__user-logged-in {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.header__sign-up-button {
+}
+
+.header__log-in-button {
 }

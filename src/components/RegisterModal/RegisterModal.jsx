@@ -9,7 +9,7 @@ const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
     email: "",
     password: "",
     name: "",
-    avatarURL: "",
+    avatar: "",
   });
 
   const handleChange = (e) => {
@@ -90,12 +90,12 @@ const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
           <input
             className="input-box"
             type="url"
-            name="avatarURL"
+            name="avatar"
             minLength="1"
             maxLength="999"
             placeholder="Image URL"
             id="url"
-            value={data.avatarURL}
+            value={data.avatar}
             onChange={handleChange}
           />
         </label>

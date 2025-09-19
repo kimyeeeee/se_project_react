@@ -5,7 +5,7 @@ import Main from "../Main/Main.jsx";
 // import defaultClothingItems from "../../utils/constants.js";
 import Footer from "../Footer/Footer.jsx";
 import ModalWithForm from "../ModalWithForm/ModalWithForm.jsx";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import ItemModal from "../ItemModal/ItemModal.jsx";
 import {
@@ -33,6 +33,7 @@ import LoginModal from "../LoginModal/LoginModal.jsx";
 import AppContext from "../../contexts/AppContext.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 import { checkToken } from "../../utils/auth.js";
+import EditProfileModal from "../EditProfileModal/EditProfileModal.jsx";
 
 function App() {
   const weatherTemp = "30";
@@ -69,7 +70,8 @@ function App() {
   };
 
   const handleAddItemSubmit = ({ name, imageUrl, weather }) => {
-    return postItems({ name, imageUrl, weather })
+    const token = getToken();
+    return postItems({ name, imageUrl, weather }, token)
       .then((res) => {
         setClothingItems([res, ...clothingItems]);
         handleCloseModal();
@@ -80,7 +82,8 @@ function App() {
   };
 
   const handleDeleteCard = (card) => {
-    deleteItems(selectedCard._id)
+    const token = getToken();
+    deleteItems(selectedCard._id, token)
       .then(() => {
         const filteredCards = clothingItems.filter((card) => {
           return card._id !== selectedCard._id;
@@ -95,12 +98,13 @@ function App() {
 
   const handleOpenRegisterModal = () => setActiveModal("register");
   const handleOpenLoginModal = () => setActiveModal("login");
+  const handleOpenEditProfileModal = () => setActiveModal("edit");
 
-  const handleRegistration = ({ email, password, name, avatarURL }) => {
+  const handleRegistration = ({ email, password, name, avatar }) => {
     console.log("in handleRegistration");
 
     auth
-      .register(name, password, email, avatarURL)
+      .register(name, password, email, avatar)
       .then((data) => {
         console.log("Registered user:", data);
         return auth.authorize(email, password);
@@ -129,18 +133,62 @@ function App() {
     auth
       .authorize(email, password)
       .then((data) => {
-        // console.log("API Response:", data);
+        console.log("API Response:", data);
+        console.log("User data:", data.user);
         localStorage.setItem("jwt", data.token);
         if (data.token) {
           setToken(data.token);
-          setCurrentUser(data.user);
-          setIsLoggedIn(true);
-          const redirectPath = location.state?.from?.pathname || "/Profile";
-          navigate(redirectPath);
+          checkToken(data.token)
+            .then((user) => {
+              setCurrentUser(user);
+              setIsLoggedIn(true);
+              const redirectPath = location.state?.from?.pathname || "/Profile";
+              navigate(redirectPath);
+              handleCloseModal();
+            })
+            .catch(console.error);
         }
       })
       .catch(console.error);
-    navigate("/signin");
+  };
+
+  const handleEditProfile = ({ profileData }) => {
+    const token = getToken();
+    api
+      .editProfile(profileData, token)
+      .then((updatedUser) => {
+        setCurrentUser(updatedUser);
+        handleCloseModal();
+      })
+      .catch(console.error);
+  };
+
+  const handleCardLike = ({ id, isLiked }) => {
+    const token = localStorage.getItem("jwt");
+    !isLiked
+      ? api
+          .addCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err))
+      : api
+          .removeCardLike(id, token)
+          .then((updatedCard) => {
+            setClothingItems((cards) =>
+              cards.map((item) => (item._id === id ? updatedCard : item))
+            );
+          })
+          .catch((err) => console.log(err));
+  };
+
+  const handleLogOut = () => {
+    localStorage.removeItem("jwt");
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    navigate("/login");
   };
 
   useEffect(() => {
@@ -150,9 +198,9 @@ function App() {
       return;
     }
     checkToken(jwt)
-      .then(({ username, email }) => {
+      .then(({ username, email, avatar }) => {
         setIsLoggedIn(true);
-        setCurrentUser({ username, email });
+        setCurrentUser({ username, email, avatar });
       })
       .catch(console.error);
   }, []);
@@ -201,6 +249,7 @@ function App() {
                   weatherTemp={temp}
                   onSelectCard={handleSelectedCard}
                   clothingItems={clothingItems}
+                  onCardLike={handleCardLike}
                 />
               }
             />
@@ -213,6 +262,8 @@ function App() {
                     onSelectCard={handleSelectedCard}
                     clothingItems={clothingItems}
                     handleCreateModal={handleCreateModal}
+                    onOpenEditProfileModal={handleOpenEditProfileModal}
+                    onLogOut={handleLogOut}
                   />
                 </ProtectedRoute>
               }
@@ -252,6 +303,7 @@ function App() {
               selectedCard={selectedCard}
               onClose={handleCloseModal}
               handleDeleteCard={handleDeleteCard}
+              onCardLike={handleCardLike}
             />
           )}
           {activeModal === "register" && (
@@ -265,7 +317,14 @@ function App() {
             <LoginModal
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "login"}
-              //something about log in
+              handleLogin={handleLogin}
+            />
+          )}
+          {activeModal === "edit" && (
+            <EditProfileModal
+              handleCloseModal={handleCloseModal}
+              isOpen={activeModal === "edit"}
+              handleEditProfile={handleEditProfile}
             />
           )}
         </CurrentUserContext.Provider>

@@ -1,16 +1,49 @@
+import { useContext } from "react";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom";
 import "./SideBar.css";
-import avatarUrl from "../../images/avatar.png";
 
-const SideBar = ({}) => {
+const SideBar = ({ handleLogOut, handleEditProfile }) => {
+  const currentUser = useContext(CurrentUserContext);
+  // console.log("Current user in SideBar:", currentUser);
+  // console.log("Avatar value:", currentUser?.avatar);
   return (
     <div className="sidebar__container">
       <div className="sidebar">
-        <img
-          src={avatarUrl}
-          alt="avatar-logo"
-          className="sidebar__avatar-logo"
-        />
-        <h3 className="sidebar__username">Terrence Tegegne</h3>
+        {currentUser?.avatar ? (
+          <img
+            src={currentUser.avatar}
+            alt="avatar-logo"
+            className="sidebar__avatar-logo"
+          />
+        ) : (
+          <div className="sidebar__avatar-placeholder">
+            {currentUser?.name?.[0]?.toUpperCase()}
+          </div>
+        )}
+        <h3 className="sidebar__username">{currentUser?.name || "User"}</h3>
+      </div>
+      <div>
+        <button
+          className="sidebar__change-profile-data-button"
+          type="button"
+          // onClick={handleOpenEditProfileModal}
+          onClick={() => {
+            console.log("Edit profile button clicked!");
+            handleEditProfile();
+          }}
+        >
+          Change profile data
+        </button>
+      </div>
+      <div>
+        <button
+          className="sidebar__log-out-button"
+          type="button"
+          onClick={handleLogOut}
+        >
+          Log Out
+        </button>
       </div>
     </div>
   );

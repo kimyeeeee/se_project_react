@@ -47,3 +47,15 @@ export const getUserInfo = (token) => {
     },
   }).then(checkServerResponse);
 };
+
+export const editProfile = (profileData, token) => {
+  console.log("Token being sent:", token);
+  return fetch(`${baseUrl}/users/me`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(profileData),
+  }).then(checkServerResponse);
+};

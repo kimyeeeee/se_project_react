@@ -11,8 +11,13 @@ const ModalWithForm = ({
 }) => {
   // if (!isOpen) return null;
   // console.log("ModalWithForm");
+  if (!isOpen) return null;
   return (
-    <div className={`modal modal_type_${name}`}>
+    <div
+      className={`modal modal_type_${name} ${
+        isOpen ? `header__user_logged-in` : `header__user_logged-out`
+      }`}
+    >
       <div className="modal__content">
         <button
           className="modal__close-button-gray"

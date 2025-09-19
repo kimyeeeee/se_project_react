@@ -32,3 +32,21 @@
   line-height: 24.8px;
   font-weight: 700;
 }
+
+.sidebar__change-profile-data {
+  width: 157px;
+  height: 25px;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24.8px;
+  font-weight: 700;
+}
+
+.sidebar__log-out {
+  width: 157px;
+  height: 25px;
+  font-family: "CabinetGrotesk-Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24.8px;
+  font-weight: 700;
+}

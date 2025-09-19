@@ -1,12 +1,37 @@
-.card_name {
+.card_container {
+  position: relative;
+}
+
+.card_name-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
   position: absolute;
-  background-color: #ffffff;
   top: 15px;
-  left: 125px;
-  height: 24px;
-  max-width: 100%;
-  color: rgba(0, 0, 0, 0.6);
+  left: 121px;
+}
+
+.card_name {
+  background-color: #ffffff;
   border-radius: 5px;
+  padding: 2px 12px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0px;
+  height: 24px;
+  line-height: 24px;
+}
+
+.card_like {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  color: #ccc;
+  padding: 0px;
+}
+
+.card_like_active {
+  color: red;
 }
 
 .card_image {
@@ -14,8 +39,4 @@
   height: 328px;
   border-radius: 10px;
   border-color: rgba(0, 0, 0, 0.3);
-}
-
-.card_container {
-  position: relative;
 }
