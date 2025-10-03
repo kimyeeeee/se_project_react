@@ -10,6 +10,8 @@ const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
 
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const handleLike = () => {
+    console.log("onCardLike type:", typeof onCardLike);
+    console.log("onCardLike value:", onCardLike);
     onCardLike({ id: item._id, isLiked });
   };
   const itemLikeButtonClassName = `card_like ${

@@ -264,6 +264,7 @@ function App() {
                     handleCreateModal={handleCreateModal}
                     onOpenEditProfileModal={handleOpenEditProfileModal}
                     onLogOut={handleLogOut}
+                    onCardLike={handleCardLike}
                   />
                 </ProtectedRoute>
               }

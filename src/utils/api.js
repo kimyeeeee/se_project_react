@@ -1,3 +1,5 @@
+import ItemCard from "../components/ItemCard/ItemCard";
+
 const baseUrl = "http://localhost:3001";
 export const checkServerResponse = (res) => {
   if (res.ok) {
@@ -57,5 +59,27 @@ export const editProfile = (profileData, token) => {
       authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(profileData),
+  }).then(checkServerResponse);
+};
+
+export const addCardLike = (_id, token) => {
+  console.log("Like Button clicked");
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
+  }).then(checkServerResponse);
+};
+
+export const removeCardLike = (_id, token) => {
+  console.log("Like Button UNclicked");
+  return fetch(`${baseUrl}/items/${_id}/likes`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      authorization: `Bearer ${token}`,
+    },
   }).then(checkServerResponse);
 };
