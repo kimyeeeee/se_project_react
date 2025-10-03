@@ -38,7 +38,7 @@ const Header = ({
             >
               + Add Clothes
             </button>
-            <Link to="/Profile">{currentUser?.name}</Link>
+            <Link to="/profile">{currentUser?.name}</Link>
             {currentUser?.avatar ? (
               <img
                 className="header__avatar-img"

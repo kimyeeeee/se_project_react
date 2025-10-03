@@ -248,7 +248,7 @@ function App() {
             />
 
             <Route
-              path="/Profile"
+              path="/profile"
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn}>
                   <Profile
