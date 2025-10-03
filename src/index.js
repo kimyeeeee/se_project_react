@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./components/App/App.jsx";
 import reportWebVitals from "./reportWebVitals.js";
 import { HashRouter } from "react-router-dom/cjs/react-router-dom.min.js";
+import LoginModal from "./components/LoginModal/LoginModal.jsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
