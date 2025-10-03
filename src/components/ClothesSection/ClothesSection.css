@@ -9,7 +9,7 @@
 .clothes_section__title {
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 24.8px;
   color: black;
   background-color: transparent;
@@ -23,9 +23,9 @@
   background-color: transparent;
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 24.8px;
-  opacity: 60%;
+  opacity: 0.6;
 }
 
 .clothes_section__cards {
@@ -33,11 +33,11 @@
   flex-wrap: wrap;
   font-family: "CabinetGrotesk-Bold";
   font-weight: 700;
-  size: 20px;
+  font-size: 20px;
   line-height: 24.8px;
   color: black;
   background-color: transparent;
   row-gap: 20px;
   column-gap: 20px;
-  border-radius: 0.3;
+  border-radius: 0.3px;
 }

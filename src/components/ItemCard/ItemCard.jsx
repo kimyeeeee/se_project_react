@@ -5,13 +5,9 @@ import React from "react";
 
 const ItemCard = ({ item, onSelectCard, onCardLike, isLoggedIn }) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log("isLoggedIn:", isLoggedIn);
-  console.log("currentUser:", currentUser);
 
   const isLiked = item.likes.some((id) => id === currentUser._id);
   const handleLike = () => {
-    console.log("onCardLike type:", typeof onCardLike);
-    console.log("onCardLike value:", onCardLike);
     onCardLike({ id: item._id, isLiked });
   };
   const itemLikeButtonClassName = `card_like ${

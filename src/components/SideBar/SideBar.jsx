@@ -5,8 +5,7 @@ import "./SideBar.css";
 
 const SideBar = ({ handleLogOut, handleEditProfile }) => {
   const currentUser = useContext(CurrentUserContext);
-  // console.log("Current user in SideBar:", currentUser);
-  // console.log("Avatar value:", currentUser?.avatar);
+
   return (
     <div className="sidebar__container">
       <div className="sidebar">
@@ -29,7 +28,6 @@ const SideBar = ({ handleLogOut, handleEditProfile }) => {
           type="button"
           // onClick={handleOpenEditProfileModal}
           onClick={() => {
-            console.log("Edit profile button clicked!");
             handleEditProfile();
           }}
         >

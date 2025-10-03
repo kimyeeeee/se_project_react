@@ -14,8 +14,6 @@ const Header = ({
   onOpenLoginModal,
 }) => {
   const currentUser = useContext(CurrentUserContext);
-  console.log(currentUser);
-  console.log("Avatar value:", currentUser?.avatar);
   return (
     <header className="header">
       <div className="header__logo">
@@ -40,7 +38,7 @@ const Header = ({
             >
               + Add Clothes
             </button>
-            <Link to="/profile">{currentUser?.name}</Link>
+            <Link to="/Profile">{currentUser?.name}</Link>
             {currentUser?.avatar ? (
               <img
                 className="header__avatar-img"

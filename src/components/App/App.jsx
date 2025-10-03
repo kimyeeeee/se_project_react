@@ -1,5 +1,5 @@
 import logo from "../../logo.svg";
-import "./App.css";
+
 import Header from "../Header/Header.jsx";
 import Main from "../Main/Main.jsx";
 // import defaultClothingItems from "../../utils/constants.js";
@@ -100,17 +100,13 @@ function App() {
   const handleOpenLoginModal = () => setActiveModal("login");
   const handleOpenEditProfileModal = () => setActiveModal("edit");
 
-  const handleRegistration = ({ email, password, name, avatar }) => {
-    console.log("in handleRegistration");
-
+  const handleRegistration = ({ name, avatar, email, password }) => {
     auth
-      .register(name, password, email, avatar)
+      .register(name, avatar, email, password)
       .then((data) => {
-        console.log("Registered user:", data);
         return auth.authorize(email, password);
       })
       .then((loginData) => {
-        console.log("logged in", loginData);
         if (loginData.token) {
           setToken(loginData.token);
           setCurrentUser(loginData.user);
@@ -121,20 +117,17 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
-        navigate("/signup");
+        navigate("/register");
       });
   };
 
   const handleLogin = ({ email, password }) => {
-    console.log("in handleLogin");
     if (!email || !password) {
       return;
     }
     auth
       .authorize(email, password)
       .then((data) => {
-        console.log("API Response:", data);
-        console.log("User data:", data.user);
         localStorage.setItem("jwt", data.token);
         if (data.token) {
           setToken(data.token);
@@ -188,7 +181,7 @@ function App() {
     localStorage.removeItem("jwt");
     setCurrentUser(null);
     setIsLoggedIn(false);
-    navigate("/login");
+    navigate("/");
   };
 
   useEffect(() => {
@@ -198,9 +191,10 @@ function App() {
       return;
     }
     checkToken(jwt)
-      .then(({ username, email, avatar }) => {
+      .then(({ name, email, avatar }) => {
         setIsLoggedIn(true);
-        setCurrentUser({ username, email, avatar });
+        setCurrentUser({ name, email, avatar });
+        currentUser.name = name;
       })
       .catch(console.error);
   }, []);
@@ -220,7 +214,6 @@ function App() {
   useEffect(() => {
     getItems()
       .then((cards) => {
-        console.log("cards", cards);
         setClothingItems(cards);
       })
       .catch((err) => {
@@ -276,6 +269,8 @@ function App() {
                   <RegisterModal
                     handleCloseModal={handleCloseModal}
                     handleRegistration={handleRegistration}
+                    isOpen={true}
+                    onClose={handleCloseModal}
                   />
                 </div>
               }
@@ -285,7 +280,11 @@ function App() {
               element={
                 <ProtectedRoute isLoggedIn={isLoggedIn} anonymous>
                   <div className="loginContainer">
-                    <LoginModal handleLogin={handleLogin} />
+                    <LoginModal
+                      handleLogin={handleLogin}
+                      isOpen={true}
+                      onClose={handleCloseModal}
+                    />
                   </div>
                 </ProtectedRoute>
               }

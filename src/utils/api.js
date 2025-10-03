@@ -1,5 +1,3 @@
-import ItemCard from "../components/ItemCard/ItemCard";
-
 const baseUrl = "http://localhost:3001";
 export const checkServerResponse = (res) => {
   if (res.ok) {
@@ -51,7 +49,6 @@ export const getUserInfo = (token) => {
 };
 
 export const editProfile = (profileData, token) => {
-  console.log("Token being sent:", token);
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -63,7 +60,6 @@ export const editProfile = (profileData, token) => {
 };
 
 export const addCardLike = (_id, token) => {
-  console.log("Like Button clicked");
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "PUT",
     headers: {
@@ -74,7 +70,6 @@ export const addCardLike = (_id, token) => {
 };
 
 export const removeCardLike = (_id, token) => {
-  console.log("Like Button UNclicked");
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "DELETE",
     headers: {

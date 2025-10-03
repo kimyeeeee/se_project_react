@@ -8,8 +8,6 @@ const EditProfileModal = ({ handleCloseModal, isOpen, handleEditProfile }) => {
     name: currentUser.name,
     avatar: currentUser.avatar,
   });
-  console.log("currentUser in EditProfileModal:", currentUser);
-  console.log("currentUser.avatar:", currentUser?.avatar);
 
   useEffect(() => {
     if (currentUser) {

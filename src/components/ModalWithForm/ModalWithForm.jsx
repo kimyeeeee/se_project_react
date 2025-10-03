@@ -9,8 +9,6 @@ const ModalWithForm = ({
   isOpen,
   onSubmit,
 }) => {
-  // if (!isOpen) return null;
-  // console.log("ModalWithForm");
   if (!isOpen) return null;
   return (
     <div
