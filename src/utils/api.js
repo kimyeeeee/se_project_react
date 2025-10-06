@@ -1,19 +1,19 @@
 const baseUrl = "http://localhost:3001";
-export const checkServerResponse = (res) => {
+const checkServerResponse = (res) => {
   if (res.ok) {
     return res.json();
   }
   return Promise.reject(`Error: ${res.status}`);
 };
 
-export const getItems = () => {
+const getItems = () => {
   return fetch(`${baseUrl}/items`, {
     method: "GET",
     headers: { "Content-Type": "application/json" },
   }).then(checkServerResponse);
 };
 
-export const postItems = ({ name, imageUrl, weather }, token) => {
+const postItems = ({ name, imageUrl, weather }, token) => {
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     headers: {
@@ -28,7 +28,7 @@ export const postItems = ({ name, imageUrl, weather }, token) => {
   }).then(checkServerResponse);
 };
 
-export const deleteItems = (_id, token) => {
+const deleteItems = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
     headers: {
@@ -38,7 +38,7 @@ export const deleteItems = (_id, token) => {
   }).then(checkServerResponse);
 };
 
-export const getUserInfo = (token) => {
+const getUserInfo = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
@@ -48,7 +48,7 @@ export const getUserInfo = (token) => {
   }).then(checkServerResponse);
 };
 
-export const editProfile = (profileData, token) => {
+const editProfile = (profileData, token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "PATCH",
     headers: {
@@ -59,7 +59,7 @@ export const editProfile = (profileData, token) => {
   }).then(checkServerResponse);
 };
 
-export const addCardLike = (_id, token) => {
+const addCardLike = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "PUT",
     headers: {
@@ -69,7 +69,7 @@ export const addCardLike = (_id, token) => {
   }).then(checkServerResponse);
 };
 
-export const removeCardLike = (_id, token) => {
+const removeCardLike = (_id, token) => {
   return fetch(`${baseUrl}/items/${_id}/likes`, {
     method: "DELETE",
     headers: {
@@ -77,4 +77,15 @@ export const removeCardLike = (_id, token) => {
       authorization: `Bearer ${token}`,
     },
   }).then(checkServerResponse);
+};
+
+module.exports = {
+  checkServerResponse,
+  getItems,
+  postItems,
+  deleteItems,
+  getUserInfo,
+  editProfile,
+  addCardLike,
+  removeCardLike,
 };
