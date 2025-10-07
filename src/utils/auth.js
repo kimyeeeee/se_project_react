@@ -1,6 +1,6 @@
 const baseUrl = "http://localhost:3001";
 
-const register = (name, password, email, avatar) => {
+export const register = (name, password, email, avatar) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -12,7 +12,7 @@ const register = (name, password, email, avatar) => {
   });
 };
 
-const authorize = (email, password) => {
+export const authorize = (email, password) => {
   return fetch(`${baseUrl}/signin`, {
     method: "POST",
     headers: {
@@ -25,7 +25,7 @@ const authorize = (email, password) => {
   });
 };
 
-const checkToken = (token) => {
+export const checkToken = (token) => {
   return fetch(`${baseUrl}/users/me`, {
     method: "GET",
     headers: {
@@ -37,5 +37,3 @@ const checkToken = (token) => {
     return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   });
 };
-
-module.export = { register, authorize, checkToken };

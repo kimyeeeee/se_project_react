@@ -30,7 +30,7 @@ const Header = ({
           <ToggleSwitch />
         </div>
         {isLoggedIn ? (
-          <div>
+          <div className="header__user-logged-in">
             <button
               className="header__add-clothes-button"
               type="text"

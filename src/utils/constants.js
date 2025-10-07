@@ -1,4 +1,4 @@
-const weatherConditions = [
+export const weatherConditions = [
   {
     url: "../images/weatherConditions/sunny.svg",
     day: true,
@@ -60,5 +60,3 @@ const weatherConditions = [
     type: "night-sunny",
   },
 ];
-
-module.export = { weatherConditions };

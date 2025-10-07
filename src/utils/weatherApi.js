@@ -3,7 +3,7 @@ const latitude = 44.34;
 const longitude = 10.99;
 const APIkey = "3ff84946da9ffde2797a3d0f34f4825c";
 
-const getForecastWeather = () => {
+export const getForecastWeather = () => {
   const weatherApi = fetch(
     `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${APIkey}`
   ).then(checkServerResponse);
@@ -11,7 +11,7 @@ const getForecastWeather = () => {
   return weatherApi;
 };
 
-const parseWeatherData = (data) => {
+export const parseWeatherData = (data) => {
   const main = data.main;
   const temperature = main && main.temp;
 
@@ -23,9 +23,4 @@ const parseWeatherData = (data) => {
   };
 
   return weather;
-};
-
-module.export = {
-  getForecastWeather,
-  parseWeatherData,
 };
