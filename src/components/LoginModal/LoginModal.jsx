@@ -3,7 +3,12 @@ import { useState } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 
-const LoginModal = ({ handleLogin, isOpen, handleCloseModal }) => {
+const LoginModal = ({
+  handleLogin,
+  isOpen,
+  handleCloseModal,
+  handleSwitchToRegister,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -29,7 +34,7 @@ const LoginModal = ({ handleLogin, isOpen, handleCloseModal }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      buttonText="Log In"
+      // buttonText="Log In"
     >
       <div className="form__input-title-container">
         <label htmlFor="email" className="input-title">
@@ -63,10 +68,17 @@ const LoginModal = ({ handleLogin, isOpen, handleCloseModal }) => {
         </label>
       </div>
 
-      <div className="modal__or-Container">
-        <Link to="/register" className="modal__or-link">
+      <div className="modal__button-container">
+        <button type="submit" className="modal__submit-button">
+          Log in
+        </button>
+        <button
+          type="button"
+          className="modal__or-link"
+          onClick={handleSwitchToRegister}
+        >
           or Register
-        </Link>
+        </button>
       </div>
     </ModalWithForm>
   );

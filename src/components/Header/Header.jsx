@@ -14,6 +14,23 @@ const Header = ({
   onOpenLoginModal,
 }) => {
   const currentUser = useContext(CurrentUserContext);
+  const monthNames = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  const today = new Date();
+  const currentDate = `${monthNames[today.getMonth()]} ${today.getDate()}`;
+
   return (
     <header className="header">
       <div className="header__logo">
@@ -22,7 +39,7 @@ const Header = ({
             <img src={wtwrLogo} alt="wtwr-logo" />
           </Link>
         </div>
-        <div>Date</div>
+        <div>{currentDate}</div>
       </div>
 
       <div className="header__user-logged-in">

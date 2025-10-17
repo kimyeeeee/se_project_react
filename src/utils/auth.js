@@ -1,6 +1,7 @@
 const baseUrl = "http://localhost:3001";
+import { checkServerResponse } from "./api";
 
-export const register = (name, password, email, avatar) => {
+export const register = (name, avatar, email, password) => {
   return fetch(`${baseUrl}/signup`, {
     method: "POST",
     headers: {
@@ -8,7 +9,7 @@ export const register = (name, password, email, avatar) => {
     },
     body: JSON.stringify({ name, avatar, email, password }),
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return checkServerResponse(res);
   });
 };
 
@@ -21,7 +22,7 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return checkServerResponse(res);
   });
 };
 
@@ -34,6 +35,6 @@ export const checkToken = (token) => {
       authorization: `Bearer ${token}`,
     },
   }).then((res) => {
-    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
+    return checkServerResponse(res);
   });
 };

@@ -47,7 +47,7 @@
   background-color: transparent;
 }
 .form__input-title-container {
-  padding-bottom: 20px;
+  /* padding-bottom: 20px; */
 }
 .modal__form {
   display: flex;
@@ -73,32 +73,30 @@
   padding-bottom: 30px;
 }
 
-.modal__add-garment-button {
+.modal__submit-button {
   height: fit-content;
   width: fit-content;
   background-color: rgba(0, 0, 0);
   color: #ffffff;
   border-radius: 4px;
   border: none;
-  margin-top: 32px;
+  margin: 0px;
 }
 
-.modal__add-garment-button:hover {
+.modal__submit-button:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.modal__add-garment-button:disabled {
+.modal__submit-button:disabled {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .modal__or-Container {
-  position: absolute;
-  left: 113px;
-  bottom: 44px;
+  text-align: center;
+  margin-top: 20px;
+  background-color: none;
 }
 
-.header__user_logged-in {
-}
-
-.header__user_logged-out {
+.modal__or-link {
+  color: rgba(0, 0, 0, 0.5);
 }

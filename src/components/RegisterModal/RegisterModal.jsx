@@ -1,10 +1,14 @@
-// import "./RegisterModal.css";
 import React, { useState, useEffect } from "react";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import { useForm } from "../../hooks/useForm";
 import { Link } from "react-router-dom";
 
-const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
+const RegisterModal = ({
+  handleCloseModal,
+  isOpen,
+  handleRegistration,
+  handleSwitchToLogin,
+}) => {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -25,6 +29,8 @@ const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
     handleRegistration(data);
   };
 
+  const isFormValid = data.email && data.password && data.name;
+
   return (
     <ModalWithForm
       className="modal-with-form"
@@ -32,7 +38,8 @@ const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
       onClose={handleCloseModal}
       isOpen={isOpen}
       onSubmit={handleSubmit}
-      buttonText="Next"
+      disabled={!isFormValid}
+      // buttonText="Next"
     >
       <div className="form__input-title-container">
         <label htmlFor="email" className="input-title">
@@ -100,10 +107,21 @@ const RegisterModal = ({ handleCloseModal, isOpen, handleRegistration }) => {
           />
         </label>
       </div>
-      <div className="modal__or-Container">
-        <Link to="/login" className="modal__or-link">
+      <div className="modal__button-container">
+        <button
+          type="submit"
+          className="modal__submit-button"
+          disabled={!isFormValid}
+        >
+          Next
+        </button>
+        <button
+          type="button"
+          onClick={handleSwitchToLogin}
+          className="modal__switch-button"
+        >
           or Login
-        </Link>
+        </button>
       </div>
     </ModalWithForm>
   );

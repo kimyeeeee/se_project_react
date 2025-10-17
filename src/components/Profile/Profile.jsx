@@ -9,6 +9,7 @@ const Profile = ({
   handleCreateModal,
   onOpenEditProfileModal,
   onLogOut,
+  onCardLike,
 }) => {
   return (
     <div className="profile">
@@ -20,6 +21,7 @@ const Profile = ({
         onSelectCard={onSelectCard}
         clothingItems={clothingItems}
         onCreateModal={handleCreateModal}
+        onCardLike={onCardLike}
       />
     </div>
   );

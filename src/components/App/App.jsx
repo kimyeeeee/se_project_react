@@ -46,7 +46,7 @@ function App() {
   // const [userData, setUserData] = useState({});
   const navigate = useNavigate();
   const location = useLocation();
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
   const [isAddItemModalOpen, setIsAddItemModalOpen] = useState(false);
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
@@ -117,7 +117,6 @@ function App() {
       })
       .catch((err) => {
         console.error(err);
-        navigate("/register");
       });
   };
 
@@ -158,6 +157,7 @@ function App() {
 
   const handleCardLike = ({ id, isLiked }) => {
     const token = localStorage.getItem("jwt");
+
     !isLiked
       ? api
           .addCardLike(id, token)
@@ -184,6 +184,14 @@ function App() {
     navigate("/");
   };
 
+  const handleSwitchToLogin = () => {
+    setActiveModal("login");
+  };
+
+  const handleSwitchToRegister = () => {
+    setActiveModal("register");
+  };
+
   useEffect(() => {
     const jwt = getToken();
 
@@ -194,7 +202,6 @@ function App() {
       .then(({ name, email, avatar }) => {
         setIsLoggedIn(true);
         setCurrentUser({ name, email, avatar });
-        currentUser.name = name;
       })
       .catch(console.error);
   }, []);
@@ -222,7 +229,7 @@ function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ isLoggedIn, currentUser }}>
+    <AppContext.Provider value={{ isLoggedIn, handleCloseModal }}>
       <CurrentTemperatureUnitContext.Provider
         value={{ currentTemperatureUnit, handleToggleSwitchChange }}
       >
@@ -262,33 +269,6 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route
-              path="/register"
-              element={
-                <div className="registerContainer">
-                  <RegisterModal
-                    handleCloseModal={handleCloseModal}
-                    handleRegistration={handleRegistration}
-                    isOpen={true}
-                    onClose={handleCloseModal}
-                  />
-                </div>
-              }
-            />
-            <Route
-              path="/login"
-              element={
-                <ProtectedRoute isLoggedIn={isLoggedIn} anonymous>
-                  <div className="loginContainer">
-                    <LoginModal
-                      handleLogin={handleLogin}
-                      isOpen={true}
-                      onClose={handleCloseModal}
-                    />
-                  </div>
-                </ProtectedRoute>
-              }
-            />
           </Routes>
           <Footer />
           {activeModal === "create" && (
@@ -311,6 +291,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "register"}
               handleRegistration={handleRegistration}
+              handleSwitchToLogin={handleSwitchToLogin}
             />
           )}
           {activeModal === "login" && (
@@ -318,6 +299,7 @@ function App() {
               handleCloseModal={handleCloseModal}
               isOpen={activeModal === "login"}
               handleLogin={handleLogin}
+              handleSwitchToRegister={handleSwitchToRegister}
             />
           )}
           {activeModal === "edit" && (
