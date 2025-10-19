@@ -199,9 +199,9 @@ function App() {
       return;
     }
     checkToken(jwt)
-      .then(({ name, email, avatar }) => {
+      .then((userData) => {
         setIsLoggedIn(true);
-        setCurrentUser({ name, email, avatar });
+        setCurrentUser(userData);
       })
       .catch(console.error);
   }, []);
