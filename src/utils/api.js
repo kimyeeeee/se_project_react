@@ -1,4 +1,7 @@
-const baseUrl = "http://localhost:3001";
+const baseUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://api.chanchanwtwr.twilightparadox.com"
+    : "http://localhost:3001";
 export const checkServerResponse = (res) => {
   if (res.ok) {
     return res.json();
